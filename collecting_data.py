@@ -19,8 +19,9 @@ session = boto3.Session(profile_name='default') # take secret key in awscli cred
 s3_client = session.client('s3')
 
 # Create file name which match the date
-file_name = datetime.now().strftime("%Y-%m-%d")
-file_name = file_name + '.csv'
+current_time = datetime.now()
+file_name = current_time.strftime("%Y-%m-%d") + '.csv'
+print(file_name)
 user = raw_input("Input User's Name:")
 
 # Create columns for the data file
@@ -82,10 +83,19 @@ try:
         file_signal.write(data)
         file_signal.write("\n")
         
+	# Time to update s3
         if datetime.now() >= update_flag:         # Update the file
             file_signal = update_file_signal(file_signal, file_name, user, BUCKET_NAME, s3_client)
             update_flag = datetime.now() + timedelta(minutes = update_time)
-            
+        # New day, program create new data file
+	if (current_time.day != datetime.now().day) or (current_time.month != datetime.now().month) \
+	or (current_time.year != datetime.now().year):
+            file_signal = update_file_signal(file_signal, file_name, user, BUCKET_NAME, s3_client)
+	    current_time = datetime.now()
+	    file_name = current_time.strftime("%Y-%m-%d") + '.csv'
+	    file_signal = exist_file_from_s3(file_name, user, BUCKET_NAME, s3_client)
+	    update_flag = datetime.now() + timedelta(minutes = update_time)
+ 
 except KeyboardInterrupt:
     file_signal.close()
     print("End")
