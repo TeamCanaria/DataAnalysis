@@ -81,6 +81,7 @@ try:
         file_signal.write(datetime.now().strftime("%H:%M:%S.%f") + ",")    # Record time corresponding to the signal 
         file_signal.write(user + ",")    # Write to column Patient Id
         file_signal.write(data)
+	print(data)
         file_signal.write("\n")
         
 	# Time to update s3
