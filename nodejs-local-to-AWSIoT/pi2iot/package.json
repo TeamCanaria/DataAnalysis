@@ -1,0 +1,15 @@
+{
+  "name": "pi2iot",
+  "version": "1.0.0",
+  "description": "Uploading data from Raspberry Pi 3B to AWS IoT via MQTT.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "build": "node index.js"
+  },
+  "author": "Albert Dillon",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-iot-device-sdk": "^2.2.0"
+  }
+}

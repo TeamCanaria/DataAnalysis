@@ -1,0 +1,9 @@
+{
+    "host":           "a1v1jv75i1h0ox.iot.ap-southeast-2.amazonaws.com",
+    "port":           8883,
+    "clientId":       "canaria-testpi",
+    "thingName":      "testpi",
+    "caCert":         "root-CA.crt",
+    "clientCert":     "ae9e7302df-certificate.pem.crt",
+    "privateKey":     "ae9e7302df-private.pem.key"
+} 
