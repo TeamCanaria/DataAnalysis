@@ -109,52 +109,22 @@ This will output:
 
 ![signal](https://github.com/TeamCanaria/DataAnalysis/blob/master/images/signal1.png)
 
-### Break down into end to end tests
+### Analysis and testing
 
-Explain what these tests test and why
+All the steps and code provided in the Van Gent Tutorial have been modified to meet our own needs, are laid out in `ECG_connect_and_analyse.ipynb`. The name is misleading, it's actually meant to be PPG. Meg McConnell, a PhD student from GCUH, has provided scripts of her work in progress for us which we can look at for reference.   
 
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+The HRV measures that we extract from the data are easily calculated using the following functions on the list containing all the RR intervals
 
 ```
-Give an example
+ibi = np.mean(RR_list) #Take the mean of RR_list to get the mean Inter Beat Interval
+print("IBI:", ibi)
+
+sdnn = np.std(RR_list) #Take standard deviation of all R-R intervals
+print("SDNN:", sdnn)
+
+sdsd = np.std(RR_diff) #Take standard deviation of the differences between all subsequent R-R intervals
+print("SDSD:", sdsd)
+
+rmssd = np.sqrt(np.mean(RR_sqdiff)) #Take root of the mean of the list of squared differences
+print("RMSSD:", rmssd)
 ```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
