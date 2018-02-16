@@ -19,12 +19,6 @@ Install commands are provided in the following links
 
 Once the prerequisites are installed, we can start to walkthrough the different data science tools available to us.
 
-GCUH has provided some C code that supposedly will have a Raspberry Pi receive data from ICU equipment and process it in a GUI software. These scripts are contained in the DatexCollectionSoftware/ and DatexPi/ directories but due to compile errors, we haven't been able to see it in action.
-
-```
-gcc `pkg-config --cflags --libs gtk+-2.0` main.c -o DatexConnectionSoftware
-```
-
 We also have two other methods of collecting our data: through bluetooth sockets and through serial port. For now we will be testing our prototype using serial interface, but bluetooth is always on option for the future.
 
 ### Running the bluetooth example
