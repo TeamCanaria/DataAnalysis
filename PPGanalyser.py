@@ -6,7 +6,7 @@ import math
 from scipy import signal
 from scipy.interpolate import UnivariateSpline
 
-class ECGanalyser:
+class PPGanalyser:
     def __init__(self, filename, column):
         self.filename = filename
         self.column = column
